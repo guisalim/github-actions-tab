@@ -15,7 +15,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pre_release_branches: prerelease*
-          release_branches: v*
+          release_branches: v* # we might need to change to somthing bigger instead of just `V*`
           create_annotated_tag: false
           fetch_all_tags: true
           dry_run: false
