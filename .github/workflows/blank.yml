@@ -16,11 +16,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pre_release_branches: prerelease*
           release_branches: v* # we might need to change to somthing bigger instead of just `V*`
-          create_annotated_tag: false
+          create_annotated_tag: true
           fetch_all_tags: true
           dry_run: false
           # custom_release_rules: <keyword>:<release_type>:<changelog_section>
-          custom_release_rules: patch:patch,minor:minor,major:major
+          custom_release_rules: patch:patch,minor:minor,major:major,release:major
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
