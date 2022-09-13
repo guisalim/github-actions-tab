@@ -26,11 +26,6 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
-  merge-into-dev-branch:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
       - name: Merge version branch -> dev
         uses: devmasx/merge-branch@master
         with:
