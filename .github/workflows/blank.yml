@@ -15,7 +15,7 @@ jobs:
           bump_version_scheme: minor
           tag_prefix: v
           
-      - name: Check Output Parameters
+      - name: Check Output Parameters1
         run: |
           echo "Got tag name ${{ steps.release.outputs.tag_name }}"
           echo "Got release version ${{ steps.release.outputs.version }}"
