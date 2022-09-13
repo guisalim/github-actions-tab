@@ -15,7 +15,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pre_release_branches: prerelease*
-          # release_branches: release/v* # we might need to change to somthing bigger instead of just `V*`
           create_annotated_tag: true
           fetch_all_tags: true
           dry_run: false
@@ -26,10 +25,3 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
-      - name: Merge version branch -> dev
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          from_branch: v1
-          target_branch: dev
-          github_token: ${{ secrets.GITHUB_TOKEN }}
