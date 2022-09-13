@@ -17,7 +17,7 @@ jobs:
           pre_release_branches: prerelease*
           release_branches: v*
           create_annotated_tag: false
-          fetch_all_tags: false
+          fetch_all_tags: true
           dry_run: false
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
