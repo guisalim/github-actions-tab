@@ -2,7 +2,7 @@ name: Bump version
 on:
   push:
     branches:
-      - v1
+      - releases/v*
 
 jobs:
   release:
@@ -18,7 +18,7 @@ jobs:
           create_annotated_tag: true
           fetch_all_tags: true
           dry_run: false
-          custom_release_rules: patch:patch,minor:minor
+          custom_release_rules: "#patch":patch,minor:minor,major:major
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
