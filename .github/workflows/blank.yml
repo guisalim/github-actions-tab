@@ -20,7 +20,7 @@ jobs:
           fetch_all_tags: true
           dry_run: false
           # custom_release_rules: <keyword>:<release_type>:<changelog_section>
-          custom_release_rules: patch:patch,minor:minor,major:major,release:major
+          custom_release_rules: patch:patch,minor:minor,major:major,prerelease:major
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
