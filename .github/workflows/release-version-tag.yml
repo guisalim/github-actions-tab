@@ -16,7 +16,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pre_release_branches: prerelease*
           create_annotated_tag: false
-          custom_release_rules: minor:minor,patch:patch,major:major
+          custom_release_rules: minor:minor,patch:patch,major:major,none:none
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
