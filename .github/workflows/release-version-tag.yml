@@ -5,7 +5,7 @@ on:
       - v1
 
 jobs:
-  create-version-tag:
+  version-tag:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
