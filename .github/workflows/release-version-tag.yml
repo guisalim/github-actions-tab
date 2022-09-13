@@ -16,7 +16,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pre_release_branches: prerelease*
           create_annotated_tag: true
-          fetch_all_tags: true
+          fetch_all_tags: false
           dry_run: false
           custom_release_rules: minor:minor,patch:patch
       - name: Create a GitHub release
