@@ -16,5 +16,4 @@ jobs:
         INITIAL_VERSION: '1.0.0'
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
-        CUSTOM_TAG: 'v*'
         RELEASE_BRANCHES: 'v*'
