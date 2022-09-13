@@ -5,8 +5,8 @@ on:
       - v1
 
 jobs:
-  create-version-tag:
-    runs-on: ubuntu-latest
+  release:
+    runs-on: [self-hosted,ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
