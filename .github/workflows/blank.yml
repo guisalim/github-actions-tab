@@ -14,8 +14,11 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          pre_release_branches: none
+          pre_release_branches: prerelease*
           release_branches: v*
+          create_annotated_tag: false
+          fetch_all_tags: false
+          dry_run: false
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
