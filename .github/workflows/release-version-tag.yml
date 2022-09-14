@@ -2,7 +2,7 @@ name: Bump version
 on:
   push:
     branches:
-      - v1
+      - release/v*
 
 jobs:
   version-tag:
@@ -16,10 +16,22 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pre_release_branches: prerelease*
           create_annotated_tag: false
-          custom_release_rules: minor:minor,patch:patch,major:major
+          custom_release_rules: minor:minor,patch:patch
+          default_bump: false
+      - name: Review Log
+        run: echo "${{ steps.tag_version.output.release_type }}" 
       - name: Create a GitHub release
+        if: steps.tag_version.outputs.release_type != 'none'
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
+
+
+# 
+# Steps to release new version:
+# 
+# [] Create new branch following the pattern: `release/v*`
+# [] Create tag for the release version, example `v2.0.0`
+# [] Commit to version branch using the 
