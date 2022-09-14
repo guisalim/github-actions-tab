@@ -2,7 +2,7 @@ name: Bump version
 on:
   push:
     branches:
-      - release/v*
+      - v*
 
 jobs:
   version-tag:
