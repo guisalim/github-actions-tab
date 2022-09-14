@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Get Previously existing tags
         run: |
-          git tag --merged ${{github.ref}} --sort=taggerdate
+          git tag --merged ${{github.ref_name}} --sort=taggerdate
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
