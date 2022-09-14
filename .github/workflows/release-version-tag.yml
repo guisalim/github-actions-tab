@@ -10,8 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Get Previously existing tags
-        run: |
-          echo "$(git tag --merged ${{github.ref_name}} --sort=taggerdate)"
+        run: git tag --merged ${{github.ref_name}} --sort=taggerdate
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
@@ -24,8 +23,8 @@ jobs:
           create_annotated_tag: false
           fetch_all_tags: false
           dry_run: false
-      - name: Review Log
-        run: echo "release type = ${{ steps.tag_version.outputs.release_type }}" 
+      - name: Review
+        run: echo "release type = ${{ steps.tag_version.outputs.release_type }} \n" && git tag --merged ${{github.ref_name}} --sort=taggerdate 
       - name: Create a GitHub release
         if: steps.tag_version.outputs.release_type
         uses: ncipollo/release-action@v1
