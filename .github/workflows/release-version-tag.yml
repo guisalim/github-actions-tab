@@ -20,8 +20,8 @@ jobs:
           default_bump: false
       
       - name: Review Log
-        id: review_log
-        run: echo "The tag is ${{ steps.tag_version.outputs.new_tag }}"
+        run: |
+          echo "The tag is ${{ steps.tag_version.outputs.new_tag }}"
       
       - name: Create a GitHub release
         id: create_release
