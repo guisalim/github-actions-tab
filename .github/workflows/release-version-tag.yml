@@ -16,7 +16,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false
           release_branches: v*
-          custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major,patch:patch
+          custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major,patch:patch,minor:minor,major:major
           default_prerelease_bump: prerelease
           create_annotated_tag: false
           fetch_all_tags: false
