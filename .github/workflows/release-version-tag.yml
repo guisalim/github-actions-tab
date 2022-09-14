@@ -16,9 +16,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pre_release_branches: prerelease*
           create_annotated_tag: false
-          custom_release_rules: minor:minor,patch:patch
-          default_bump: patch
-          dry_run: true
+          fetch_all_tags: true
+          custom_release_rules: minor:minor,patch:patch,major:major
+          default_bump: false
       - name: Review Log
         run: echo "release type = ${{ steps.tag_version.outputs.release_type }}" 
       - name: Create a GitHub release
