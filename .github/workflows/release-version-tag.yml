@@ -18,9 +18,11 @@ jobs:
           create_annotated_tag: false
           custom_release_rules: minor:minor,patch:patch
           default_bump: false
+      
       - name: Review Log
         id: review_log
-        run: echo ${{ step.tag_version.outputs.new_tag }}
+        run: echo "The tag is ${{ steps.tag_version.outputs.new_tag }}"
+      
       - name: Create a GitHub release
         id: create_release
         if: [minor,patch,major].includes(steps.tag_version.outputs.release_type)
