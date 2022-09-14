@@ -23,15 +23,16 @@ jobs:
           dry_run: false
       - name: Review Release Type
         run: echo "The release type used was = ${{ steps.tag_version.outputs.release_type || 'Not Specified' }}"
-      # - name: Create a GitHub release
-      #   if: steps.tag_version.outputs.release_type
-      #   uses: ncipollo/release-action@v1
-      #   with:
-      #     tag: ${{ steps.tag_version.outputs.new_tag }}
-      #     name: Release ${{ steps.tag_version.outputs.new_tag }}
-      #     body: ${{ steps.tag_version.outputs.changelog }}
 
 # 
-# Steps to release new version:
-# 
+# Steps for increase major version:
 # [] Create new branch following the pattern: `release/v*`
+# [] Commit your latest change to the branch using a major rule: `git commit -m "major(version): <any comment>"`
+# [] Push to origin `git push -u origin release/v*`
+
+# 
+# Steps for increase minor/patch version:
+# For each commit in your feature branch, include the commit message:
+# * `git commit -m "minor(<your component>): <any comment>"` - will increase minor when merged to your `release/v*` branch
+# * `git commit -m "patch(<your component>): <any comment>"` - will increase patch when merged to your `release/v*` branch
+# other available rules can be checked on parameter: custom_release_rules
