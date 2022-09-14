@@ -19,8 +19,10 @@ jobs:
           custom_release_rules: minor:minor,patch:patch
           default_bump: false
       - name: Review Log
-        run: echo "NEW TAG= ${{ step.tag_version.outputs.new_tag }}"
+        id: review_log
+        run: echo ${{ step.tag_version.outputs.new_tag }}
       - name: Create a GitHub release
+        id: create_release
         if: [minor,patch,major].includes(steps.tag_version.outputs.release_type)
         uses: ncipollo/release-action@v1
         with:
