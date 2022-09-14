@@ -14,12 +14,13 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          pre_release_branches: prerelease*
+          default_bump: patch
           release_branches: v*
+          custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major,patch:patch
+          default_prerelease_bump: prerelease
           create_annotated_tag: false
-          fetch_all_tags: true
-          custom_release_rules: minor:minor,patch:patch,major:major
-          default_bump: false
+          fetch_all_tags: false
+          dry_run: false
       - name: Review Log
         run: echo "release type = ${{ steps.tag_version.outputs.release_type }}" 
       - name: Create a GitHub release
