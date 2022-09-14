@@ -15,6 +15,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pre_release_branches: prerelease*
+          release_branches: v*
           create_annotated_tag: false
           fetch_all_tags: true
           custom_release_rules: minor:minor,patch:patch,major:major
