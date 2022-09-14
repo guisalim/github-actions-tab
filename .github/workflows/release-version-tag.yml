@@ -23,8 +23,8 @@ jobs:
           create_annotated_tag: false
           fetch_all_tags: false
           dry_run: false
-      - name: Review
-        run: echo "release type = ${{ steps.tag_version.outputs.release_type }} \n" && git tag --merged ${{github.ref_name}} --sort=taggerdate 
+      - name: Review Release Type
+        run: echo "The release type used was = ${{ steps.tag_version.outputs.release_type || 'none' }}"
       - name: Create a GitHub release
         if: steps.tag_version.outputs.release_type
         uses: ncipollo/release-action@v1
