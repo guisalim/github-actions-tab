@@ -18,19 +18,15 @@ jobs:
           create_annotated_tag: false
           custom_release_rules: minor:minor,patch:patch
           default_bump: false
+      - name: Review Log
+        run: echo "release type = ${{ steps.tag_version.outputs.release_type }}" 
       - name: Create a GitHub release
-        id: create_release
-        if: [minor,patch,major].includes(steps.tag_version.outputs.release_type)
+        if: steps.tag_version.outputs.release_type
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
-      - name: Review Log
-        run: |
-          echo "The tag is ${{ steps.tag_version.outputs.new_tag }}"
-
-
 # 
 # Steps to release new version:
 # 
