@@ -1,6 +1,11 @@
 {
     "plugins": [
-        "npm",
+        [
+            "npm",
+            {
+                "forcePublish": false
+            }
+        ],
         "all-contributors",
         "conventional-commits",
         "first-time-contributor",
