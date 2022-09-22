@@ -22,7 +22,7 @@ on:
 
 jobs:
   release:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
       - uses: actions/checkout@v3
@@ -39,29 +39,14 @@ jobs:
         with:
           filters: |
             node-package:
-              - 'applications/node/lib/**'
-            python-package:
-              - 'applications/python/metacast-python/**'
-
-      - name: Get container ready
-        #if: steps.filter.outputs.node-package == 'true' || steps.filter.outputs.python-package == 'true'
-        run: |
-          sudo apt -y update && sudo apt -y install python3.8
+              - 'packages/**'
 
       - uses: actions/setup-node@v3
         #if: steps.filter.outputs.node-package == 'true' || steps.filter.outputs.python-package == 'true'
         with:
           node-version: '16'
 
-      - name: Create Metacast Python Package
-        #if: steps.filter.outputs.python-package == 'true'
-        working-directory: applications/python/metacast-python
-        run: |
-          python3 setup.py sdist
-
       - name: Prep Build
-        env:
-          NPM_TOKEN: ${{ secrets.JFROG_TOKEN }}
         run: |
           sudo npm install -g yarn
           sudo npm install -g typescript
@@ -71,9 +56,7 @@ jobs:
       - name: Create Release
         #if: steps.filter.outputs.node-package == 'true' || steps.filter.outputs.python-package == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GH_CDS_TOKEN }}
-          PRIVATE_TOKEN: ${{ secrets.GH_CDS_TOKEN }}
-          NPM_TOKEN: ${{ secrets.JFROG_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: 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
+          GITHUB_TOKEN: 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
         run: |
           yarn release
