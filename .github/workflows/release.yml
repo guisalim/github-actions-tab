@@ -7,7 +7,7 @@ on:
       - release/*
   pull_request:
     branches:
-      - v*
+      - dev/v*
 
 jobs:
   release:
@@ -32,7 +32,7 @@ jobs:
 
       - name: Create Release
         env:
-          GH_TOKEN: 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
-          GITHUB_TOKEN: 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
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           yarn release
