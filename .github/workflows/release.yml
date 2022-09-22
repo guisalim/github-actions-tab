@@ -29,7 +29,7 @@ jobs:
         run: |
           sudo npm install -g yarn
           sudo npm install -g typescript
-          yarn install --frozen-lockfile
+          yarn install
           yarn build
 
       - name: Create Release
