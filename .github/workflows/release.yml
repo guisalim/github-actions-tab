@@ -1,0 +1,61 @@
+name: Cut Release
+
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - release/*
+  pull_request:
+    branches:
+      - v*
+  workflow_dispatch: # Allow manual runs
+    inputs:
+      create-release:
+        type: choice
+        description: Select if we can force the release process
+        options:
+          - 'true'
+          - 'false'
+        default: 'false'
+        required: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # Ensure that git uses your token with admin access to the repo
+          token: ${{ secrets.GH_CDS_TOKEN }}
+
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+
+      - name: Check filter
+        uses: actions/path-filter@8c7f485a57f7cad3483dcc0fdf36122a0542f200
+        id: filter
+        with:
+          filters: |
+            node-package:
+              - 'packages/**'
+
+      - uses: actions/setup-node@v3
+        #if: steps.filter.outputs.node-package == 'true' || steps.filter.outputs.python-package == 'true'
+        with:
+          node-version: '16'
+
+      - name: Prep Build
+        run: |
+          sudo npm install -g yarn
+          sudo npm install -g typescript
+          yarn install
+          yarn build
+
+      - name: Create Release
+        #if: steps.filter.outputs.node-package == 'true' || steps.filter.outputs.python-package == 'true'
+        env:
+          GH_TOKEN: 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
+          GITHUB_TOKEN: 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
+        run: |
+          yarn release
