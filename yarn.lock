@@ -5004,7 +5004,7 @@ lerna-cli@^5.1.1:
     write-yaml-file "^4.2.0"
     zlib "^1.0.5"
 
-lerna@^5.5.2:
+lerna@^5.1.1:
   version "5.5.2"
   resolved "https://registry.npmjs.org/lerna/-/lerna-5.5.2.tgz#3b96ea81bb71a0e57c110b64c6dc2cc58d7acca9"
   integrity sha512-P0ThZMfWJ4BP9xRbXaLyoOCYjlPN615FRV2ZBnTBA12lw32IlcREIgvF0N1zZX7wXtsmN56rU3CABoJ5lU8xuw==

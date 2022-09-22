@@ -1,1 +1,1 @@
-console.log('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');
+console.log('test');

@@ -5,9 +5,11 @@ on:
     # Sequence of patterns matched against refs/heads
     branches:
       - release/*
+      - dev/v*
   pull_request:
     branches:
       - dev/v*
+      - release/*
 
 jobs:
   release:

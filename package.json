@@ -32,5 +32,9 @@
     "clean": "lerna clean",
     "build": "lerna run --parallel build",
     "release": "auto shipit"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
