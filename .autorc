@@ -9,7 +9,8 @@
     "onlyPublishWithReleaseLabel": true,
     "prereleaseBranches": [
         "release/v1",
-        "release/v2"
+        "release/v2",
+        "release/v3"
     ],
     "release": {
         "prerelease": true
