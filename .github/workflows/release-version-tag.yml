@@ -1,38 +1,38 @@
-name: Bump version
-on:
-  push:
-    branches:
-      - v*
+# name: Bump version
+# on:
+#   push:
+#     branches:
+#       - release/v*
 
-jobs:
-  version-tag:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: false
-          release_branches: v*
-          custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major,patch:patch,minor:minor,major:major
-          default_prerelease_bump: prerelease
-          create_annotated_tag: false
-          fetch_all_tags: false
-          dry_run: false
-      - name: Review Release Type
-        run: echo "The release type used was = ${{ steps.tag_version.outputs.release_type || 'Not Specified' }}"
+# jobs:
+#   version-tag:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Bump version and push tag
+#         id: tag_version
+#         uses: mathieudutour/github-tag-action@v6.0
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           default_bump: false
+#           release_branches: release/v*
+#           custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major,patch:patch,minor:minor,major:major
+#           default_prerelease_bump: prerelease
+#           create_annotated_tag: false
+#           fetch_all_tags: false
+#           dry_run: false
+#       - name: Review Release Type
+#         run: echo "The release type used was = ${{ steps.tag_version.outputs.release_type || 'Not Specified' }}"
 
-# 
-# Steps for increase major version:
-# [] Create new branch following the pattern: `release/v*`
-# [] Commit your latest change to the branch using a major rule: `git commit -m "major(version): <any comment>"`
-# [] Push to origin `git push -u origin release/v*`
+# # 
+# # Steps for increase major version:
+# # [] Create new branch following the pattern: `release/v*`
+# # [] Commit your latest change to the branch using a major rule: `git commit -m "major(version): <any comment>"`
+# # [] Push to origin `git push -u origin release/v*`
 
-# 
-# Steps for increase minor/patch version:
-# For each commit in your feature branch, include the commit message:
-# * `git commit -m "minor(<your component>): <any comment>"` - will increase minor when merged to your `release/v*` branch
-# * `git commit -m "patch(<your component>): <any comment>"` - will increase patch when merged to your `release/v*` branch
-# other available rules can be checked on parameter: custom_release_rules
+# # 
+# # Steps for increase minor/patch version:
+# # For each commit in your feature branch, include the commit message:
+# # * `git commit -m "minor(<your component>): <any comment>"` - will increase minor when merged to your `release/v*` branch
+# # * `git commit -m "patch(<your component>): <any comment>"` - will increase patch when merged to your `release/v*` branch
+# # other available rules can be checked on parameter: custom_release_rules

@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "packages/packageA",
+    "packages/packageB",
+    "packages/packageC"
+  ],
+  "npmClient": "yarn",
+  "useNx": false,
+  "version": "independent",
+  "useWorkspaces": false
+}

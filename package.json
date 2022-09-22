@@ -1,0 +1,36 @@
+{
+  "name": "github-actions-tab",
+  "version": "1.0.0",
+  "description": "Test Environment Release Tag!!",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guisalim/github-actions-tab.git"
+  },
+  "keywords": [],
+  "author": "Guilherme Salim <guisalim@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guisalim/github-actions-tab/issues"
+  },
+  "homepage": "https://github.com/guisalim/github-actions-tab#readme",
+  "dependencies": {
+    "lerna": "^5.1.1",
+    "lerna-cli": "^5.1.1"
+  },
+  "devDependencies": {
+    "@auto-it/all-contributors": "10.37.4",
+    "@auto-it/conventional-commits": "^10.37.1",
+    "@auto-it/first-time-contributor": "10.37.4",
+    "@auto-it/git-tag": "^10.24.3",
+    "@auto-it/released": "^10.37.1",
+    "@auto-it/upload-assets": "^10.37.1",
+    "auto": "10.37.4"
+  },
+  "scripts": {
+    "clean": "lerna clean",
+    "build": "lerna run --parallel build",
+    "release": "auto shipit"
+  }
+}
