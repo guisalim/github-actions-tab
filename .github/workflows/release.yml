@@ -8,16 +8,6 @@ on:
   pull_request:
     branches:
       - v*
-  workflow_dispatch: # Allow manual runs
-    inputs:
-      create-release:
-        type: choice
-        description: Select if we can force the release process
-        options:
-          - 'true'
-          - 'false'
-        default: 'false'
-        required: false
 
 jobs:
   release:
@@ -27,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           # Ensure that git uses your token with admin access to the repo
-          token: ${{ secrets.GH_CDS_TOKEN }}
+          token: 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
 
       - name: Prepare repository
         run: git fetch --unshallow --tags
