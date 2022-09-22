@@ -32,14 +32,6 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
-      - name: Check filter
-        uses: actions/path-filter@8c7f485a57f7cad3483dcc0fdf36122a0542f200
-        id: filter
-        with:
-          filters: |
-            node-package:
-              - 'packages/**'
-
       - uses: actions/setup-node@v3
         #if: steps.filter.outputs.node-package == 'true' || steps.filter.outputs.python-package == 'true'
         with:
