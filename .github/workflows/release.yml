@@ -15,15 +15,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
       - uses: actions/checkout@v3
-        with:
-          # Ensure that git uses your token with admin access to the repo
-          token: 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
 
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
       - uses: actions/setup-node@v3
-        #if: steps.filter.outputs.node-package == 'true' || steps.filter.outputs.python-package == 'true'
         with:
           node-version: '16'
 
@@ -35,7 +31,6 @@ jobs:
           yarn build
 
       - name: Create Release
-        #if: steps.filter.outputs.node-package == 'true' || steps.filter.outputs.python-package == 'true'
         env:
           GH_TOKEN: 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
           GITHUB_TOKEN: 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
