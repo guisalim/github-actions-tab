@@ -1,9 +1,10 @@
 export PATH=$(npm bin):$PATH
-# export GH_TOKEN="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"
-# export branch="dev/v3"
+export GH_TOKEN="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"
+export branch="dev/v3"
+VERSION='minor'
+# auto release
 
 # VERSION=`auto version`
-VERSION='minor'
 ## Support for label 'skip-release'
 if [ ! -z "$VERSION" ]; then
 
