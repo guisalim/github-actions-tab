@@ -1,6 +1,6 @@
 export PATH=$(npm bin):$PATH
 
-VERSION=`auto version`
+VERSION=`yarn auto version`
 
 ## Support for label 'skip-release'
 if [ ! -z "$VERSION" ]; then
