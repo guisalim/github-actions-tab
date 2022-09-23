@@ -14,5 +14,9 @@
     ],
     "release": {
         "prerelease": true
+    },
+    "canary": {
+        "target": "pr-body",
+        "force": true
     }
 }
