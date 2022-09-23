@@ -1,0 +1,40 @@
+name: Cut Release
+
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - release/*
+      - dev/v*
+  pull_request:
+    branches:
+      - dev/v*
+      - release/*
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Prep Build
+        run: |
+          sudo npm install -g yarn
+          sudo npm install -g typescript
+          yarn install
+          yarn build
+
+      - name: Create Release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          yarn release

@@ -1,0 +1,23 @@
+{
+    "plugins": [
+        [
+            "npm",
+            {
+                "forcePublish": false
+            }
+        ],
+        "all-contributors",
+        "conventional-commits",
+        "first-time-contributor",
+        "released"
+    ],
+    "onlyPublishWithReleaseLabel": true,
+    "prereleaseBranches": [
+        "release/v1",
+        "release/v2",
+        "release/v3"
+    ],
+    "release": {
+        "prerelease": true
+    }
+}
