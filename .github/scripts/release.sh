@@ -1,6 +1,11 @@
 export PATH=$(npm bin):$PATH
-export GH_TOKEN="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"
+
+if [ -z "$GH_TOKEN" ]; then
+export GH_TOKEN="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"
+fi
+if [ -z "$branch" ]; then 
 export branch="dev/v3"
+fi
 VERSION='minor'
 # auto release
 
