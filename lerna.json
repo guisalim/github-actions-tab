@@ -1,8 +1,6 @@
 {
   "packages": [
-    "packages/packageA",
-    "packages/packageB",
-    "packages/packageC"
+    "packages/*"
   ],
   "npmClient": "yarn",
   "useNx": false,
