@@ -37,4 +37,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          echo "gh_token: $GH_TOKEN"
+          echo "github_token: $GITHUB_TOKEN"
           yarn release
