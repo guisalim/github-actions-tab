@@ -1,5 +1,5 @@
 export PATH=$(npm bin):$PATH
-export GH_TOKEN="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"
+export GH_TOKEN="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"
 export branch="dev/v3"
 VERSION='minor'
 # auto release
