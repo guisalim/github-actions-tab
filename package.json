@@ -31,7 +31,7 @@
   "scripts": {
     "clean": "lerna clean",
     "build": "lerna run --parallel build",
-    "release": "auto shipit"
+    "release": "auto shipit --prerelease"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
